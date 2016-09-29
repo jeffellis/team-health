@@ -2,11 +2,12 @@ import Immutable from 'immutable'
 
 export const stateKey = 'survey';
 
-function _getTopic(area, awesome, crappy) {
+function _getTopic(area, awesome, crappy, meh = '') {
     return {
         area,
         awesome,
-        crappy
+        crappy,
+        meh
     };
 }
 
