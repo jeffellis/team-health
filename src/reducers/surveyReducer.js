@@ -33,6 +33,10 @@ function _getInitialState() {
   });
 }
 
+const _recordVote = (state, {topic, vote}) => {
+  return state.setIn(['votes', topic.get('id')], vote);
+};
+
 const surveyReducer = (state = _getInitialState(), action) => {
   switch (action.type) {
 
@@ -40,15 +44,18 @@ const surveyReducer = (state = _getInitialState(), action) => {
       state = _recordVote(state, action.payload);
       break;
 
+    case 'nextTopic':
+      state = state.set('step', state.get('step') + 1);
+      break;
+
+    case 'previousTopic':
+      state = state.set('step', state.get('step') - 1);
+      break;
+
     default:
       break;
   }
   return state;
-};
-
-const _recordVote = (state, {topic, vote}) => {
-  let votes = state.get('votes');
-  return state.setIn(['votes', topic.get('id')], vote);
 };
 
 export const getSurvey = (state) => {
@@ -61,13 +68,17 @@ export const getCurrentTopic = (state) => {
   return surveyTopics.get(survey.get('step'));
 };
 
-export const getVotes = (state) => {
-  return state.votes;
-}
-
 export const getVote = (state, topic) => {
   const votes = state[stateKey].get('votes');
   return votes.get(topic.get('id'));
-}
+};
+
+export const getCurrentStep = (state) => {
+  return state[stateKey].get('step');
+};
+
+export const getNumberOfSteps = (state) => {
+  return state[stateKey].get('topics').size;
+};
 
 export default surveyReducer;
