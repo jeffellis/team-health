@@ -6,7 +6,8 @@ import './SurveyTopic.css';
 export default class SurveyTopic extends Component {
   static propTypes = {
     onVote: React.PropTypes.func.isRequired,
-    topic: ImmutablePropTypes.map
+    topic: ImmutablePropTypes.map,
+    vote: React.PropTypes.string
   };
 
   render() {
@@ -16,7 +17,7 @@ export default class SurveyTopic extends Component {
         <div className="topic">
           <h2 className="topic-area">{ this.props.topic.get('area') }</h2>
           <div className="topic-box">
-            <StopLight onChange={ this.props.onVote }/>
+            <StopLight color={ this.props.vote } onChange={ this.props.onVote }/>
             <div className="topic-example-box">
               <div className="topic-examples">
                 <div className="topic-example topic-awesome">

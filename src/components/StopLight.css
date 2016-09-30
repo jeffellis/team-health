@@ -12,11 +12,11 @@
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   border-radius: 25px;
-  opacity: 0.60;
+  opacity: 0.50;
 }
 
 .StopLight-red {
-  background: red;
+  background: #F50C10;
   margin-bottom: 5px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .StopLight-green {
-  background: green;
+  background: #74f442;
 }
 
 .StopLight-button-selected {
