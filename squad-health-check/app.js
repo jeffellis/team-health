@@ -4,9 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var config = require('./config');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var perspectives = require('./routes/perspectives');
 
 var app = express();
 
@@ -23,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/perspectives', perspectives);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,5 +44,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Use native Node promises
+mongoose.Promise = global.Promise;
+
+mongoose.connect(config.db.uri)
+  .then(() => console.log('connected to mongo at ' + config.db.uri)
+  .catch((err) => console.error(err)));
 
 module.exports = app;

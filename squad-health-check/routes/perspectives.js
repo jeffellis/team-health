@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var Perspective = require('../models/Perspective')
 
-/* GET users listing. */
+/* GET perspectives listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  Perspective.find(function(err, perspectives) { 
+    if (err) return next(err);
+    res.json(perspectives);
+  })
 });
 
 module.exports = router;
