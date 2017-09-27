@@ -13,17 +13,17 @@ const PerspectiveSchema = new mongoose.Schema(
             trim: true,
             type: String
         },
-		green: {
+		awesome: {
             required: true,
             trim: true,
             type: String
         },    
-		yellow: {
+		meh: {
             required: true,
             trim: true,
             type: String
         },    
-		red: {
+		crappy: {
             required: true,
             trim: true,
             type: String
