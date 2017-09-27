@@ -69,3 +69,21 @@ collection.insert([
         "red": "We are just pawns in a game of chess, with no influence over what we build or how we build it."
     }
 ]);
+
+sourceSet = "ca-agile-central";
+collection.deleteMany({sourceSet: sourceSet});
+
+collection.insert([
+    {
+        "sourceSet": sourceSet,
+        "area": "Development Environment", 
+        "green": "Our development environment is a pleasure to use.",
+        "red": "Massive PITA."
+    },
+    {
+        "sourceSet": sourceSet,
+        "area": "Foosball",
+        "green": "Our foosball facilities are in top form.",
+        "red": "Broken men, square balls, and unlevel tables"
+    }
+]);
