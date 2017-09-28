@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import MainMenu from './MainMenu';
+import Overview from './Overview';
 
 class AppBody extends Component {
 
   render() {
     const contents = (
-      <MainMenu/>
+      <Overview/>
     );
 
     return(
