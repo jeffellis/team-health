@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -7,7 +8,16 @@ import MenuIcon from 'material-ui-icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import './AppHeader.css';
 
+export const MENU_ITEMS = {
+  CREATE_WORKSHOP: 'create-workshop',
+  JOIN_WORKSHOP: 'join-workshop'
+};
+
 class AppHeader extends Component {
+  static propTypes = {
+    onMenuItemSelect: PropTypes.func
+  };
+
   state = {
     anchorEl: null,
     menuOpen: false,
@@ -19,8 +29,8 @@ class AppHeader extends Component {
 
   handleRequestClose = (event) => {
     const menuItem = event.target && event.target.getAttribute('value');
-    if (menuItem) {
-      console.log(menuItem);
+    if (menuItem && this.props.onMenuItemSelect) {
+      this.props.onMenuItemSelect(menuItem);
     }
     this.setState({ menuOpen: false });
   };
@@ -58,10 +68,10 @@ class AppHeader extends Component {
 
     return (
       <Menu { ...menuProps }>
-        <MenuItem value="create-workshop" { ...menuItemProps } >
+        <MenuItem value={ MENU_ITEMS.CREATE_WORKSHOP } { ...menuItemProps } >
           Create A Workshop
         </MenuItem>
-        <MenuItem value="join-workshop" { ...menuItemProps } >
+        <MenuItem value={ MENU_ITEMS.JOIN_WORKSHOP } { ...menuItemProps } >
           Join A Workshop
         </MenuItem>
       </Menu>

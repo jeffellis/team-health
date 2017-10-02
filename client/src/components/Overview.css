@@ -5,4 +5,5 @@
 
 .overview-image {
   width: 80%;
+  max-width: 50rem;
 }

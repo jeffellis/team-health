@@ -13,6 +13,12 @@
   -moz-border-radius: 25px;
   border-radius: 25px;
   opacity: 0.50;
+  float: left;
+}
+
+.StopLight-buttonBackground {
+  opacity: 1;
+  background-color: white;
 }
 
 .StopLight-red {
