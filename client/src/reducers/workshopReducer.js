@@ -1,6 +1,6 @@
 import Immutable from 'immutable'
 
-export const stateKey = 'survey';
+export const stateKey = 'workshop';
 
 function _getTopic(id, area, awesome, crappy, meh = '') {
   return {
@@ -49,7 +49,7 @@ const _recordVote = (state, {topic, vote}) => {
   return state.setIn(['votes', topic.get('id')], vote);
 };
 
-const surveyReducer = (state = _getInitialState(), action) => {
+const workshopReducer = (state = _getInitialState(), action) => {
   switch (action.type) {
 
     case 'vote':
@@ -86,14 +86,14 @@ const _getPreviousStep = (state) => {
   return step;  
 }
 
-export const getSurvey = (state) => {
+export const getWorkshop = (state) => {
   return state[stateKey];
 };
 
 export const getCurrentTopic = (state) => {
-  const survey = getSurvey(state);
-  const surveyTopics = survey.get('topics');
-  return surveyTopics.get(survey.get('step'));
+  const workshop = getWorkshop(state);
+  const workshopTopics = workshop.get('topics');
+  return workshopTopics.get(workshop.get('step'));
 };
 
 export const getVote = (state, topic) => {
@@ -109,4 +109,4 @@ export const getNumberOfSteps = (state) => {
   return state[stateKey].get('topics').size;
 };
 
-export default surveyReducer;
+export default workshopReducer;

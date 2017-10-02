@@ -1,10 +1,10 @@
 import { combineReducers, createStore as reduxCreateStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import surveyReducer from '../reducers/surveyReducer';
+import workshopReducer from '../reducers/workshopReducer';
 
 const reducers = {
-    survey: surveyReducer
+    workshop: workshopReducer
 };
 
 

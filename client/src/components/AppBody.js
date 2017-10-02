@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Overview from './Overview';
-import SurveyContainer from './SurveyContainer';
+import WorkshopContainer from './WorkshopContainer';
 
 export const VIEW_TYPES = {
   OVERVIEW: 0,
@@ -19,7 +19,7 @@ class AppBody extends Component {
 
     switch(this.props.view) {
       case VIEW_TYPES.WORKSHOP:
-        contents = ( <SurveyContainer/> );
+        contents = ( <WorkshopContainer/> );
         break;
         
       default:

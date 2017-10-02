@@ -2,9 +2,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import StopLight from './StopLight';
-import './SurveyTopic.css';
+import './Topic.css';
 
-export default class SurveyTopic extends Component {
+export default class Topic extends Component {
   static propTypes = {
     onVote: PropTypes.func.isRequired,
     topic: ImmutablePropTypes.map,
