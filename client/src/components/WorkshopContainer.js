@@ -5,16 +5,16 @@ import {
     getVote,
     getCurrentStep,
     getNumberOfSteps
-} from '../reducers/surveyReducer';
-import SurveyTopic from './SurveyTopic';
+} from '../reducers/workshopReducer';
+import Topic from './Topic';
 import {
     goToNextTopic,
     goToPreviousTopic,
-    surveyTopicVote,
-} from '../actions/SurveyActions';
+    topicVote,
+} from '../actions/WorkshopActions';
 import Button from 'material-ui/Button';
 
-import "./SurveyContainer.css";
+import "./WorkshopContainer.css";
 
 const mapStateToProps = (state) => {
   const topic = getCurrentTopic(state);
@@ -26,10 +26,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-class SurveyContainer extends Component {
+class WorkshopContainer extends Component {
 
   onVote = (vote) => {
-    this.props.dispatch(surveyTopicVote(vote, this.props.topic));
+    this.props.dispatch(topicVote(vote, this.props.topic));
   };
 
   nextTopic = () => {
@@ -65,9 +65,9 @@ class SurveyContainer extends Component {
     }
 
     return (
-        <div className="survey-container">
-          <SurveyTopic topic={ this.props.topic } vote={ this.props.vote } onVote={ this.onVote }/>
-          <div className="survey-button-bar">
+        <div className="workshop-container">
+          <Topic topic={ this.props.topic } vote={ this.props.vote } onVote={ this.onVote }/>
+          <div className="workshop-button-bar">
             <Button { ...previousProps }>
               Previous
             </Button>
@@ -80,4 +80,4 @@ class SurveyContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(SurveyContainer);
+export default connect(mapStateToProps)(WorkshopContainer);

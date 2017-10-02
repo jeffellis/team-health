@@ -1,4 +1,4 @@
-export const surveyTopicVote = (vote, topic) => {
+export const topicVote = (vote, topic) => {
   return { type: 'vote', payload: { vote, topic } };
 };
 
